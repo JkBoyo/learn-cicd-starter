@@ -15,7 +15,7 @@ func TestGetAPIKey(t *testing.T) {
 	}{
 		"Correct Header": {header: "Authorization",
 			token:  "ApiKey 123456789",
-			expect: "123456789"},
+			expect: "123456 789"},
 		"No Header": {header: "",
 			token:  "",
 			expect: ErrNoAuthHeaderIncluded.Error()},
