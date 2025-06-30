@@ -31,4 +31,4 @@ jobs:
           project_id: "composed-maxim-464112-p6"
 
       - name: Push build
-        run: gcloud builds submit --tag us-central1-docker.pkg.dev/composed-maxim-464112-p6/notely-ar-repo:latest .
+        run: gcloud builds submit --tag us-central1-docker.pkg.dev/composed-maxim-464112-p6/notely-ar-repo/notely:latest .
