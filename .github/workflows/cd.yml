@@ -18,3 +18,11 @@ jobs:
 
       - name: Build app
         run: bash scripts/buildprod.sh
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+      - name: Push build
+        run: gcloud builds submit --tag us-central1-docker.pkg.dev/composed-maxim-464112-p6/notely-ar-repo:latest .
