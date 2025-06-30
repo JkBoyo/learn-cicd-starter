@@ -19,11 +19,16 @@ jobs:
       - name: Build app
         run: bash scripts/buildprod.sh
 
+      - name: Authenticate with GCP
+        id: 'auth' # This ID is useful for referencing outputs if needed, but not strictly required for basic auth
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v2'
         with:
           project_id: "composed-maxim-464112-p6"
-          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
       - name: Push build
         run: gcloud builds submit --tag us-central1-docker.pkg.dev/composed-maxim-464112-p6/notely-ar-repo:latest .
